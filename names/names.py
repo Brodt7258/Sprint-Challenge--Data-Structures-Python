@@ -25,11 +25,21 @@ print('tree_2 assembled')
 
 duplicates = []  # Return the list of duplicates in this data structure
 
+# Runtime is ~O(n^2), where n is the length of a single list
+# List one must be iterated through fully to find duplicates, requiring n steps
+# and for each iteration on list one, a linear search is performed against list two,
+# requiring another n steps on average. n * n == n^2
+
 # Replace the nested for loops below with your improvements
 # for name_1 in names_1:
 #     for name_2 in names_2:
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
+
+# runtime for this solution should be ~O(n log n). Every entry in tree 1 must be iterated through, requiring n steps.
+# But searching tree 2 for duplicates should require only log n steps... assuming that tree 2 is fairly well balanced.
+# no promises there, it's a btree, not an avl
+# n * log n == n log n
 
 def append_dupes(item):
     if names_tree_2.contains(item):
