@@ -6,12 +6,13 @@ start_time = time.time()
 f = open('names_1.txt', 'r')
 names_1 = f.read().split("\n")  # List containing 10000 names
 f.close()
-names_tree_1 = BinarySearchTree(None)
 
-for name in names_1:
-    names_tree_1.insert(name)
+# names_tree_1 = BinarySearchTree(None)
 
-print('tree_1 assembled')
+# for name in names_1:
+#     names_tree_1.insert(name)
+
+# print('tree_1 assembled')
 
 f = open('names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
@@ -41,11 +42,17 @@ duplicates = []  # Return the list of duplicates in this data structure
 # no promises there, it's a btree, not an avl
 # n * log n == n log n
 
-def append_dupes(item):
-    if names_tree_2.contains(item):
-        duplicates.append(item)
+# def append_dupes(item):
+#     if names_tree_2.contains(item):
+#         duplicates.append(item)
 
-names_tree_1.for_each(append_dupes)
+# names_tree_1.for_each(append_dupes)
+
+# no idea why I started with 2 btrees. The only advantage came from searching the second one.
+# iterating over the first caused a considerable, and unnecessary slowdown, due to the time needed to build it.
+for name in names_1:
+    if names_tree_2.contains(name):
+        duplicates.append(name)
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
