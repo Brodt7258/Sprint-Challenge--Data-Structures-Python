@@ -19,6 +19,15 @@ class LinkedList:
   def __init__(self):
     # reference to the head of the list
     self.head = None
+  
+  def __iter__(self):
+    current = self.head
+    while current:
+      item, current = current, current.next_node
+      yield item.value
+
+  def __str__(self):
+    return str([item for item in self])
 
   def add_to_head(self, value):
     node = Node(value)
@@ -43,5 +52,12 @@ class LinkedList:
     return False
 
   def reverse_list(self):
-    # TO BE COMPLETED
-    pass
+    current = self.head
+    prev = None
+    while current:
+      # at the end of the list? update the head
+      if current.next_node is None:
+        self.head = current
+
+      # swap all the things
+      prev, current.next_node, current = current, prev, current.next_node
