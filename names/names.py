@@ -1,14 +1,27 @@
 import time
+from binary_search_tree import BinarySearchTree
 
 start_time = time.time()
 
 f = open('names_1.txt', 'r')
 names_1 = f.read().split("\n")  # List containing 10000 names
 f.close()
+names_tree_1 = BinarySearchTree(None)
+
+for name in names_1:
+    names_tree_1.insert(name)
+
+print('tree_1 assembled')
 
 f = open('names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
+names_tree_2 = BinarySearchTree(None)
+
+for name in names_2:
+    names_tree_2.insert(name)
+
+print('tree_2 assembled')
 
 duplicates = []  # Return the list of duplicates in this data structure
 
